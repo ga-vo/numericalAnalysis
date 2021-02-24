@@ -4,7 +4,7 @@ import seaborn as sns
 
 sns.set_theme(style='darkgrid')
 
-"""
+""" Performs the integration of a function between a and b using Trapezoidal rule
 Parameters
 ----------
 fun : function
@@ -19,6 +19,11 @@ verbose: bool, default=False
     If true print each iteration
 graph: bool, default=True
     If true graphically shows the integration process
+
+Returns
+-------
+intgrl
+    a double with the value of integral for the function between a and b
 """
 def trapezoidal_integration_rule(fun, a, b, N, verbose=False, graph=True):
     dx = (b-a)/N
