@@ -35,7 +35,7 @@ def composite_3_8_simpson_integration_rule(fun, a, b, N, verbose=False, graph=Tr
         print("\n Integral between {0} and {1} \n dx= {2}".format(a, b, h))
         
     for k in range(1, N):
-        if(k%3 != 3):
+        if(k%3 != 0):
             x_k= a + k*h
             intgrl += 3*fun(x_k)
             if(verbose):
@@ -47,19 +47,22 @@ def composite_3_8_simpson_integration_rule(fun, a, b, N, verbose=False, graph=Tr
                 plt.fill_between([x_k, x_k+h], [fun(x_k), fun(x_k+h)], alpha=0.5)
     
     for k in range(1,int(N/3)):
-        x_3k=a+3*k*h
+        x_3k=a+(3*k*h)
         intgrl += 2*fun(x_3k)
 
         if(verbose):
                 intgrlaux = intgrl*(3*h/8)
                 print(
-                    "\n x_k: {0}, integral: {1}".format(x_k, intgrlaux))
+                    "\n x_3k: {0}, integral: {1}".format(x_3k, intgrlaux))
         if(graph):
                 plt.plot([x_k, x_k+h], [fun(x_k), fun(x_k+h)], 'r.')
                 plt.fill_between([x_k, x_k+h], [fun(x_k), fun(x_k+h)], alpha=0.5)\
     
+    x_k=b
     intgrl+=fun(b)
     intgrl *= 3*h/8
+    if(verbose):
+                print("\n x_k: {0}, integral: {1}".format(x_k, intgrl))
 
     if(graph):
         x=np.linspace(a,b,300)
