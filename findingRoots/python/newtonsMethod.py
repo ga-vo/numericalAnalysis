@@ -39,7 +39,7 @@ def newtonsMethod(fun, der, p0, iter=50, verbose=False, graph=True):
                 p.append(pn)
                 
         else:
-            print("Error: Derivate of {:10.10} equals 0".format(p1))
+            print("Error: Derivate of {:10.10} equals 0".format(pn))
             break
     
     if(graph):
