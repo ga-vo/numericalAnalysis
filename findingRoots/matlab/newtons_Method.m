@@ -1,13 +1,17 @@
 function [r]=newtons_Methodfun,der,p0,iter,verbose,graph)
     pn=p0;
     for i=0:iter
-        paux=pn;
-        if(graph)
-            ps(i+1)=pn;
-        end
-        pn=paux-(fun(paux)./der(paux));
-        if(verbose)
-            fprintf('\n %i | p_n: %5.5f  | fun(p_n): %5.5f  | der(p_n): %5.5f ',i,pn,fun(pn),der(pn));
+        if(~der(pn)==0)
+            paux=pn;
+            if(graph)
+                ps(i+1)=pn;
+            end
+            pn=paux-(fun(paux)./der(paux));
+            if(verbose)
+                fprintf('\n %i | p_n: %5.5f  | fun(p_n): %5.5f  | der(p_n): %5.5f ',i,pn,fun(pn),der(pn));
+            end
+        else
+            fprintf('/n Error: Derivate of %10.10f equals 0',pn);
         end
     end
     r=pn;
