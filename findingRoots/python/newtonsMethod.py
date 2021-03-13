@@ -31,10 +31,9 @@ def newtonsMethod(fun, der, p0, iter=50, verbose=False, graph=True):
     p=[p0]
     for _ in range(iter):
         if(not der(pn) == 0):
-            pn -= fun(pn)/der(pn)
             if(verbose):
                 print("{:5} | p_n: {:5.5} | fun(p_n): {:5.5} | der(p_n): {:5.5}".format(_,pn,fun(pn),der(pn)))
-
+            pn -= fun(pn)/der(pn)
             if(graph):
                 p.append(pn)
                 
